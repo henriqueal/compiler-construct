@@ -1,0 +1,12 @@
+### Starting build.
+# Target: semanticoTest.ml.depends, tags: { extension:ml, file:semanticoTest.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules semanticoTest.ml > semanticoTest.ml.depends
+# Target: semantico.ml.depends, tags: { extension:ml, file:semantico.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules semantico.ml > semantico.ml.depends
+# Target: semantico.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:semantico.cmo, file:semantico.ml, implem, ocaml, package(menhirLib), quiet }
+ocamlfind ocamlc -c -package menhirLib -o semantico.cmo semantico.ml
++ ocamlfind ocamlc -c -package menhirLib -o semantico.cmo semantico.ml
+File "semantico.ml", line 1, characters 13-21:
+Error: Unbound module Ambiente
+Command exited with code 2.
+# Compilation unsuccessful.

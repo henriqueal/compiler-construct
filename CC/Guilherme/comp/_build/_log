@@ -1,0 +1,67 @@
+### Starting build.
+# Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules main.ml > main.ml.depends
+# Target: lualexer.mll, tags: { extension:mll, file:lualexer.mll, lexer, ocaml, ocamllex, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamllex.opt -q lualexer.mll
+# Target: lualexer.ml.depends, tags: { extension:ml, file:lualexer.ml, ocaml, ocamldep, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules lualexer.ml > lualexer.ml.depends
+# Target: parser.mly.depends, tags: { extension:mly, file:parser.mly, menhir_ocamldep, ocaml, ocamldep, quiet }
+menhir --raw-depend --ocamldep '/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules' parser.mly > parser.mly.depends
+# Target: ast.ml.depends, tags: { extension:ml, file:ast.ml, ocaml, ocamldep, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules ast.ml > ast.ml.depends
+# Target: ast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamlc.opt -c -o ast.cmo ast.ml
+# Target: parser.mly, tags: { byte, compile, extension:mly, file:parser.mly, menhir, ocaml, parser, quiet }
+menhir --ocamlc /home/henrique/.opam/4.02.1/bin/ocamlc.opt --infer parser.mly
++ menhir --ocamlc /home/henrique/.opam/4.02.1/bin/ocamlc.opt --infer parser.mly
+File "parser.mly", line 67, characters 0-5:
+Warning: the precedence level assigned to AND is never useful.
+File "parser.mly", line 67, characters 0-5:
+Warning: the precedence level assigned to ATRIBUICAO is never useful.
+File "parser.mly", line 66, characters 0-5:
+Warning: the precedence level assigned to DIFERENTE is never useful.
+File "parser.mly", line 65, characters 0-5:
+Warning: the precedence level assigned to DIVISAO is never useful.
+File "parser.mly", line 68, characters 0-6:
+Warning: the precedence level assigned to EXPONENCIACAO is never useful.
+File "parser.mly", line 66, characters 0-5:
+Warning: the precedence level assigned to IGUALDADE is never useful.
+File "parser.mly", line 69, characters 0-9:
+Warning: the precedence level assigned to IN is never useful.
+File "parser.mly", line 66, characters 0-5:
+Warning: the precedence level assigned to MAIOR is never useful.
+File "parser.mly", line 66, characters 0-5:
+Warning: the precedence level assigned to MAIORIGUAL is never useful.
+File "parser.mly", line 66, characters 0-5:
+Warning: the precedence level assigned to MENOR is never useful.
+File "parser.mly", line 66, characters 0-5:
+Warning: the precedence level assigned to MENORIGUAL is never useful.
+File "parser.mly", line 65, characters 0-5:
+Warning: the precedence level assigned to MODULO is never useful.
+File "parser.mly", line 65, characters 0-5:
+Warning: the precedence level assigned to MULTIPLICACAO is never useful.
+File "parser.mly", line 67, characters 0-5:
+Warning: the precedence level assigned to OR is never useful.
+File "parser.mly", line 65, characters 0-5:
+Warning: the precedence level assigned to SOMA is never useful.
+File "parser.mly", line 65, characters 0-5:
+Warning: the precedence level assigned to SUBTRACAO is never useful.
+Warning: 7 states have shift/reduce conflicts.
+Warning: one state has reduce/reduce conflicts.
+Warning: 37 shift/reduce conflicts were arbitrarily resolved.
+Warning: one reduce/reduce conflict was arbitrarily resolved.
+# Target: parser.mli.depends, tags: { extension:mli, file:parser.mli, ocaml, ocamldep, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules parser.mli > parser.mli.depends
+# Target: parser.cmi, tags: { byte, compile, extension:mli, file:parser.mli, interf, ocaml, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamlc.opt -c -o parser.cmi parser.mli
+# Target: lualexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lualexer.cmo, file:lualexer.ml, implem, ocaml, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamlc.opt -c -o lualexer.cmo lualexer.ml
+# Target: main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamlc.opt -c -o main.cmo main.ml
+# Target: parser.ml.depends, tags: { extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules parser.ml > parser.ml.depends
+# Target: parser.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:parser.cmo, file:parser.ml, implem, ocaml, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamlc.opt -c -o parser.cmo parser.ml
+# Target: main.byte, tags: { byte, dont_link_with, extension:byte, file:main.byte, link, ocaml, program, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamlc.opt ast.cmo parser.cmo lualexer.cmo main.cmo -o main.byte
+# Compilation successful.

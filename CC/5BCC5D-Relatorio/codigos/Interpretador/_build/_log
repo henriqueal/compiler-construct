@@ -1,0 +1,12 @@
+### Starting build.
+# Target: interpreteTeste.ml.depends, tags: { extension:ml, file:interpreteTeste.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules interpreteTeste.ml > interpreteTeste.ml.depends # cached
+# Target: interprete.ml.depends, tags: { extension:ml, file:interprete.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules interprete.ml > interprete.ml.depends
++ ocamlfind ocamldep -package menhirLib -modules interprete.ml > interprete.ml.depends
+File "interprete.ml", line 392, characters 82-84:
+Warning 2: this is not the end of a comment.
+File "interprete.ml", line 392, characters 83-84:
+Error: Syntax error: operator expected.
+Command exited with code 2.
+# Compilation unsuccessful.

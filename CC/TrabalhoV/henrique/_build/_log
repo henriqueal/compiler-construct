@@ -1,0 +1,25 @@
+### Starting build.
+# Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules main.ml > main.ml.depends # cached
+# Target: lexer.mll, tags: { extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamllex.opt -q lexer.mll # cached
+# Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules lexer.ml > lexer.ml.depends # cached
+# Target: parser.mly.depends, tags: { extension:mly, file:parser.mly, menhir_ocamldep, ocaml, ocamldep, quiet }
+menhir --raw-depend --ocamldep '/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules' parser.mly > parser.mly.depends
++ menhir --raw-depend --ocamldep '/home/henrique/.opam/4.02.1/bin/ocamldep.opt -modules' parser.mly > parser.mly.depends
+File "parser.mly", line 114, characters 20-21:
+Error: syntax error.
+Ill-formed production.
+A production is a sequence of producers, followed with a semantic action.
+Examples of well-formed producers:
+  expr
+  option(COMMA)
+  separated_list(COMMA, expr)
+  e = expr
+  ds = declaration*
+  es = list(terminated(expr, SEMI))
+  es = list(e = expr SEMI { e })
+  xs = list(x = var { Some x } | WILDCARD { None })
+Command exited with code 1.
+# Compilation unsuccessful.

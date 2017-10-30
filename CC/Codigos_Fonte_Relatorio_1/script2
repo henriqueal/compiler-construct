@@ -1,0 +1,21 @@
+#!/bin/sh
+
+
+   for var in 10 11
+   do
+        echo
+   	echo \\subsection{Exercício $var}
+   	echo \\subsubsection{Lua}
+   	echo \\lstinputlisting[label={arq:micro$var.lua}, language=Lua,
+   	echo caption={micro$var.lua}]{codigos/Lua/micro$var.lua}
+
+   	echo \\subsubsection{Java}
+   	echo \\lstinputlisting[label={arq:micro$var.java}, language=Java,
+   	echo caption={micro$var.java}]{codigos/Java/micro$var.java}
+
+   	echo \\subsubsection{Smali}
+   	echo \\lstinputlisting[label={arq:micro$var.smali}, language=smali,
+   	echo caption={micro$var.smali}]{codigos/Smali/micro$var.smali}
+
+  done	
+

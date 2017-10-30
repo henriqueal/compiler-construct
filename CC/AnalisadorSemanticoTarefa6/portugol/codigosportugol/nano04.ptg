@@ -1,0 +1,6 @@
+algoritmo "nano04"
+
+n : inteiro
+
+n = 1 % 2
+

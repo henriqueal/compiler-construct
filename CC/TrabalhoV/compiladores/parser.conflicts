@@ -1,0 +1,272 @@
+
+** Conflict (reduce/reduce) in state 159.
+** Token involved: ABREPARENTESE
+** This state is reached from program after reading:
+
+functioncall 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+(?)
+
+** In state 159, looking ahead at ABREPARENTESE, reducing production
+** prefixexp -> functioncall 
+** is permitted because of the following sub-derivation:
+
+stat list(stat) 
+functioncall 
+prefixexp args // lookahead token appears because args can begin with ABREPARENTESE
+functioncall . 
+
+** In state 159, looking ahead at ABREPARENTESE, reducing production
+** stat -> functioncall 
+** is permitted because of the following sub-derivation:
+
+stat list(stat) // lookahead token appears because list(stat) can begin with ABREPARENTESE
+functioncall . 
+
+** Conflict (shift/reduce) in state 89.
+** Tokens involved: VIRGULA PONTOEVIRGULA
+** The following explanations concentrate on token VIRGULA.
+** This state is reached from program after reading:
+
+WHILE ABRECHAVES field fieldsep_field_rule 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+stat list(stat) 
+WHILE exp DO block END 
+      tableconstructor 
+      ABRECHAVES option(fieldlist) FECHACHAVES 
+                 fieldlist 
+                 (?)
+
+** In state 89, looking ahead at VIRGULA, shifting is permitted
+** because of the following sub-derivation:
+
+field list(fieldsep_field_rule) option(fieldsep) 
+      fieldsep_field_rule list(fieldsep_field_rule) 
+                          fieldsep_field_rule list(fieldsep_field_rule) 
+                          fieldsep field 
+                          . VIRGULA 
+
+** In state 89, looking ahead at VIRGULA, reducing production
+** list(fieldsep_field_rule) -> 
+** is permitted because of the following sub-derivation:
+
+field list(fieldsep_field_rule) option(fieldsep) // lookahead token appears because option(fieldsep) can begin with VIRGULA
+      fieldsep_field_rule list(fieldsep_field_rule) // lookahead token is inherited
+                          . 
+
+** Conflict (shift/reduce) in state 83.
+** Tokens involved: VIRGULA PONTOEVIRGULA
+** The following explanations concentrate on token VIRGULA.
+** This state is reached from program after reading:
+
+WHILE ABRECHAVES field 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+stat list(stat) 
+WHILE exp DO block END 
+      tableconstructor 
+      ABRECHAVES option(fieldlist) FECHACHAVES 
+                 fieldlist 
+                 (?)
+
+** In state 83, looking ahead at VIRGULA, shifting is permitted
+** because of the following sub-derivation:
+
+field list(fieldsep_field_rule) option(fieldsep) 
+      fieldsep_field_rule list(fieldsep_field_rule) 
+      fieldsep field 
+      . VIRGULA 
+
+** In state 83, looking ahead at VIRGULA, reducing production
+** list(fieldsep_field_rule) -> 
+** is permitted because of the following sub-derivation:
+
+field list(fieldsep_field_rule) option(fieldsep) // lookahead token appears because option(fieldsep) can begin with VIRGULA
+      . 
+
+** Conflict (shift/reduce) in state 73.
+** Tokens involved: SUBTRACAO SOMA PONTOPONTO OR MULTIPLICACAO MODULO MENORIGUAL MENOR MAIORIGUAL MAIOR IGUALDADE EXPONENCIACAO DIVISAO DIFERENTE AND
+** The following explanations concentrate on token SUBTRACAO.
+** This state is reached from program after reading:
+
+WHILE unop exp 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+stat list(stat) 
+WHILE exp DO block END 
+      (?)
+
+** In state 73, looking ahead at SUBTRACAO, shifting is permitted
+** because of the following sub-derivation:
+
+unop exp 
+     exp binop exp 
+         . SUBTRACAO 
+
+** In state 73, looking ahead at SUBTRACAO, reducing production
+** exp -> unop exp 
+** is permitted because of the following sub-derivation:
+
+exp binop exp // lookahead token appears because binop can begin with SUBTRACAO
+unop exp . 
+
+** Conflict (shift/reduce) in state 71.
+** Tokens involved: SUBTRACAO SOMA PONTOPONTO OR MULTIPLICACAO MODULO MENORIGUAL MENOR MAIORIGUAL MAIOR IGUALDADE EXPONENCIACAO DIVISAO DIFERENTE AND
+** The following explanations concentrate on token SUBTRACAO.
+** This state is reached from program after reading:
+
+WHILE exp binop exp 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+stat list(stat) 
+WHILE exp DO block END 
+      (?)
+
+** In state 71, looking ahead at SUBTRACAO, shifting is permitted
+** because of the following sub-derivation:
+
+exp binop exp 
+          exp binop exp 
+              . SUBTRACAO 
+
+** In state 71, looking ahead at SUBTRACAO, reducing production
+** exp -> exp binop exp 
+** is permitted because of the following sub-derivation:
+
+exp binop exp // lookahead token appears because binop can begin with SUBTRACAO
+exp binop exp . 
+
+** Conflict (shift/reduce) in state 43.
+** Token involved: ABREPARENTESE
+** This state is reached from program after reading:
+
+varlist ATRIBUICAO prefixexp 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+(?)
+
+** In state 43, looking ahead at ABREPARENTESE, shifting is permitted
+** because of the following sub-derivation:
+
+stat list(stat) 
+varlist ATRIBUICAO explist 
+                   exp list(virgula_exp_rule) 
+                   prefixexp 
+                   functioncall 
+                   prefixexp args 
+                             . ABREPARENTESE option(explist) FECHAPARENTESE 
+
+** In state 43, looking ahead at ABREPARENTESE, reducing production
+** exp -> prefixexp 
+** is permitted because of the following sub-derivation:
+
+stat list(stat) // lookahead token appears because list(stat) can begin with ABREPARENTESE
+varlist ATRIBUICAO explist // lookahead token is inherited
+                   exp list(virgula_exp_rule) // lookahead token is inherited because list(virgula_exp_rule) can vanish
+                   prefixexp . 
+
+** Conflict (shift/reduce) in state 24.
+** Token involved: VIRGULA
+** This state is reached from program after reading:
+
+WHILE FUNCTION ABREPARENTESE ID virgula_id_rule 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+stat list(stat) 
+WHILE exp DO block END 
+      functiondef 
+      FUNCTION funcbody 
+               ABREPARENTESE option(parlist) FECHAPARENTESE block END 
+                             parlist 
+                             (?)
+
+** In state 24, looking ahead at VIRGULA, reducing production
+** list(virgula_id_rule) -> 
+** is permitted because of the following sub-derivation:
+
+namelist option(virgula_tres_pontos_rule) // lookahead token appears because option(virgula_tres_pontos_rule) can begin with VIRGULA
+ID list(virgula_id_rule) // lookahead token is inherited
+   virgula_id_rule list(virgula_id_rule) // lookahead token is inherited
+                   . 
+
+** In state 24, looking ahead at VIRGULA, shifting is permitted
+** because of the following sub-derivation:
+
+namelist option(virgula_tres_pontos_rule) 
+ID list(virgula_id_rule) 
+   virgula_id_rule list(virgula_id_rule) 
+                   virgula_id_rule list(virgula_id_rule) 
+                   . VIRGULA ID 
+
+** Conflict (shift/reduce) in state 21.
+** Token involved: VIRGULA
+** This state is reached from program after reading:
+
+WHILE FUNCTION ABREPARENTESE ID 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+program 
+block EOF 
+list(stat) option(retstat) 
+stat list(stat) 
+WHILE exp DO block END 
+      functiondef 
+      FUNCTION funcbody 
+               ABREPARENTESE option(parlist) FECHAPARENTESE block END 
+                             parlist 
+                             (?)
+
+** In state 21, looking ahead at VIRGULA, reducing production
+** list(virgula_id_rule) -> 
+** is permitted because of the following sub-derivation:
+
+namelist option(virgula_tres_pontos_rule) // lookahead token appears because option(virgula_tres_pontos_rule) can begin with VIRGULA
+ID list(virgula_id_rule) // lookahead token is inherited
+   . 
+
+** In state 21, looking ahead at VIRGULA, shifting is permitted
+** because of the following sub-derivation:
+
+namelist option(virgula_tres_pontos_rule) 
+ID list(virgula_id_rule) 
+   virgula_id_rule list(virgula_id_rule) 
+   . VIRGULA ID 

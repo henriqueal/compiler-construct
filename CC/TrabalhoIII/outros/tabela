@@ -1,0 +1,63 @@
+\begin{table}[!h]
+\centering
+\caption{Tabela de tokens para a linguagem Lua}
+\label{tab:tokens-lua}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Token} & \textbf{Descrição}                             \\ \hline
+AND   		&	Token para a palavra reservada "and"	\\ \hline 
+BREAK   	&	Token para a palavra reservada "break"	\\ \hline 
+DO   		&	Token para a palavra reservada "do"	\\ \hline 
+ELSE   		&	Token para a palavra reservada "else"	\\ \hline 
+ELSEIF  	&	Token para a palavra reservada "elseif"	\\ \hline 
+END   		&	Token para a palavra reservada "end"	\\ \hline 
+FALSE   	&	Token para a palavra reservada "false"	\\ \hline 
+FOR   		&	Token para a palavra reservada "for"	\\ \hline 
+FUNCTION   	&	Token para a palavra reservada "function"	\\ \hline 
+GOTO   		&	Token para a palavra reservada "goto"	\\ \hline 
+IF   		&	Token para a palavra reservada "if"	\\ \hline 
+IN   		&	Token para a palavra reservada "in"	\\ \hline 
+LOCAL   	&	Token para a palavra reservada "local"	\\ \hline 
+NIL   		&	Token para a palavra reservada "nil"	\\ \hline 
+NOT   		&	Token para a palavra reservada "not"	\\ \hline 
+OR   		&	Token para a palavra reservada "or"	\\ \hline 
+REPEAT   	&	Token para a palavra reservada "repeat"	\\ \hline 
+RETURN   	&	Token para a palavra reservada "return"	\\ \hline 
+THEN   		&	Token para a palavra reservada "then"	\\ \hline 
+TRUE   		&	Token para a palavra reservada "true"	\\ \hline 
+UNTIL   	&	Token para a palavra reservada "until"	\\ \hline 
+WHILE  		&	Token para a palavra reservada "while"	\\ \hline 
+ADICAO		& 	Token para o operador	 	"+"	\\ \hline 
+SUBTRACAO	& 	Token para o operador	 	"-"	\\ \hline 
+MULTIPLICACAO	& 	Token para o operador	 	"*"	\\ \hline 
+DIVISAO		& 	Token para o operador	 	"/"	\\ \hline 
+MODULO		& 	Token para o operador	 	"%"	\\ \hline 
+EXPONENCIACAO	& 	Token para o operador	 	"^"	\\ \hline 
+COMPRIMENTO	& 	Token para o operador	 	"#"	\\ \hline 
+EQUIVALENTE	& 	Token para o operador	 	"=="	\\ \hline 
+NAOEQUIVALENTE	& 	Token para o operador	 	"~="	\\ \hline 
+MENOROUIGUAL	& 	Token para o operador	 	"<="	\\ \hline 
+MAIOROUIGUAL	& 	Token para o operador	 	">="	\\ \hline 
+MENOR		& 	Token para o operador	 	"<"	\\ \hline 
+MAIOR		& 	Token para o operador	 	">"	\\ \hline 
+IGUAL		& 	Token para o operador	 	"="	\\ \hline 
+ABREPARENTESE	& 	Token para o operador	 	"("	\\ \hline 
+FECHAPARENTESE	& 	Token para o operador	 	")"	\\ \hline 
+ABRECHAVES	& 	Token para o operador	 	"{"	\\ \hline 
+FECHACHAVES	& 	Token para o operador	 	"}"	\\ \hline 
+ABRECOLCHETE	& 	Token para o operador	 	"["	\\ \hline 
+FECHACOLCHETE	& 	Token para o operador	 	"]"	\\ \hline 
+DOISPONTOSDUPLO	& 	Token para o operador	 	"::"	\\ \hline 
+PONTOEVIRGULA	& 	Token para o operador	 	";"	\\ \hline 
+DOISPOTNOS	& 	Token para o operador	 	":"	\\ \hline 
+VIRGULA		& 	Token para o operador	 	","	\\ \hline 
+PONTO		& 	Token para o operador	 	"."	\\ \hline 
+PONTODUPLO	& 	Token para o operador	 	".."	\\ \hline 
+PONTOTRIPLO	& 	Token para o operador	 	"..." 	\\ \hline 
+LITINT		&	Token para inteiros 			\\ \hline
+LITSTRING 	&	Token para string 			\\ \hline
+ID		&	Token para identificador		\\ \hline
+EOF             & 	Token para fim de entrada "EOF"		\\ \hline
+\end{tabular}
+\end{table}
+

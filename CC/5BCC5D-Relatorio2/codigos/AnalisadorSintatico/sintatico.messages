@@ -1,0 +1,1707 @@
+programa: INCLUDE BIBLIOTECA WHILE 
+##
+## Ends in an error in state: 170.
+##
+## list(biblioteca) -> biblioteca . list(biblioteca) [ VOID INT FLOAT CHAR ]
+##
+## The known suffix of the stack is as follows:
+## biblioteca 
+##
+
+Estado 170: Esperava uma biblioteca ou tipo (void, int, float, char).
+Ex:
+#include <stdio.h>
+#include <stdlib.h>
+int a;
+
+programa: INCLUDE WHILE 
+##
+## Ends in an error in state: 1.
+##
+## biblioteca -> INCLUDE . BIBLIOTECA [ VOID INT INCLUDE FLOAT CHAR ]
+##
+## The known suffix of the stack is as follows:
+## INCLUDE 
+##
+
+Estado 1: Esperava o nome de uma biblioteca.
+Ex:
+#include <stdio.h>
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DECR WHILE 
+##
+## Ends in an error in state: 110.
+##
+## comando_id -> DECR . variavel [ PTVIRG FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## DECR 
+##
+
+Estado 110: Esperava uma variavel após operador unario.
+Ex:
+--a;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE VOID 
+##
+## Ends in an error in state: 123.
+##
+## comando_do_while -> DO ABCHAVE nonempty_list(comando) FCCHAVE . WHILE ABPAR expressao FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## DO ABCHAVE nonempty_list(comando) FCCHAVE 
+##
+
+Estado 123: Esperava um comando 'while'.
+Ex:
+do
+{
+}
+while();
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE WHILE ABPAR CARACTERE FCPAR WHILE 
+##
+## Ends in an error in state: 139.
+##
+## comando -> comando_do_while . PTVIRG [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## comando_do_while 
+##
+
+Estado 139: Esperava um ';'.
+Ex:
+do
+{
+}while();
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE WHILE ABPAR LITSTRING WHILE 
+##
+## Ends in an error in state: 126.
+##
+## comando_do_while -> DO ABCHAVE nonempty_list(comando) FCCHAVE WHILE ABPAR expressao . FCPAR [ PTVIRG ]
+## expressao -> expressao . SOMA expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## DO ABCHAVE nonempty_list(comando) FCCHAVE WHILE ABPAR expressao 
+##
+
+Estado 126: Esperava um ')' ou um operador logico/aritmetico.
+Ex:
+do
+{
+   a--;
+}
+while(a > 10);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE WHILE ABPAR WHILE 
+##
+## Ends in an error in state: 125.
+##
+## comando_do_while -> DO ABCHAVE nonempty_list(comando) FCCHAVE WHILE ABPAR . expressao FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## DO ABCHAVE nonempty_list(comando) FCCHAVE WHILE ABPAR 
+##
+
+Estado 125: Esperava uma expressao apos '('.
+Ex:
+do
+{
+   a--;
+}
+while(a > 10);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE WHILE WHILE 
+##
+## Ends in an error in state: 124.
+##
+## comando_do_while -> DO ABCHAVE nonempty_list(comando) FCCHAVE WHILE . ABPAR expressao FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## DO ABCHAVE nonempty_list(comando) FCCHAVE WHILE 
+##
+
+Estado 124: Esperava um '(' apos 'while'.
+Ex:
+do
+{
+}
+while();
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO ABCHAVE RETURN CARACTERE PTVIRG VOID 
+##
+## Ends in an error in state: 145.
+##
+## nonempty_list(comando) -> comando . [ FCCHAVE ]
+## nonempty_list(comando) -> comando . nonempty_list(comando) [ FCCHAVE ]
+##
+## The known suffix of the stack is as follows:
+## comando 
+##
+
+Estado 145: Esperava um comando ou '}' apos ';'.
+Ex:
+Ex:
+do
+{
+   a--;
+}
+while(a < 10);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO ABCHAVE VOID 
+##
+## Ends in an error in state: 121.
+##
+## comando_do_while -> DO ABCHAVE . nonempty_list(comando) FCCHAVE WHILE ABPAR expressao FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## DO ABCHAVE 
+##
+
+Estado 121: Esperava um comando apos '{'.
+Ex:
+do
+{
+   a--;
+}
+while(a > 10);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE DO WHILE 
+##
+## Ends in an error in state: 120.
+##
+## comando_do_while -> DO . ABCHAVE nonempty_list(comando) FCCHAVE WHILE ABPAR expressao FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## DO 
+##
+
+Estado 120: Esperava um '{' apos 'do'.
+Ex:
+do
+{
+}
+while();
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID ATRIB LITSTRING FCPAR 
+##
+## Ends in an error in state: 106.
+##
+## comando_for -> FOR ABPAR comando_atribuicao . PTVIRG expressao PTVIRG comando_atrib FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR comando_atribuicao 
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 105, spurious reduction of production comando_atribuicao -> variavel atribuicao expressao 
+##
+
+Estado 106: Esperava um ';' apos comando de atribuicao.
+Ex:
+for(a = 1;;)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID ATRIB LITSTRING PTVIRG LITSTRING PTVIRG INCR ID FCPAR ABCHAVE VOID 
+##
+## Ends in an error in state: 119.
+##
+## comando_for -> FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG comando_atrib FCPAR ABCHAVE . nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG comando_atrib FCPAR ABCHAVE 
+##
+
+Estado 119: Esperava um comando apos '{'.
+Ex:
+for(a = 0; a < 10; a++)
+{
+   puts(a);
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID ATRIB LITSTRING PTVIRG LITSTRING PTVIRG INCR ID FCPAR WHILE 
+##
+## Ends in an error in state: 118.
+##
+## comando_for -> FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG comando_atrib FCPAR . ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG comando_atrib FCPAR 
+##
+
+Estado 118: Esperava um '{' apos ')'.
+Ex:
+for(a = 1; a < 10; a++)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID ATRIB LITSTRING PTVIRG LITSTRING PTVIRG INCR ID WHILE 
+##
+## Ends in an error in state: 117.
+##
+## comando_for -> FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG comando_atrib . FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG comando_atrib 
+##
+
+Estado 117: Esperava um ')' apos comando de incremento/decremento.
+Ex:
+for(a = 1; a < 10; a++)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID ATRIB LITSTRING PTVIRG LITSTRING PTVIRG WHILE 
+##
+## Ends in an error in state: 109.
+##
+## comando_for -> FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG . comando_atrib FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR comando_atribuicao PTVIRG expressao PTVIRG 
+##
+
+Estado 109: Esperava um comando de incremento/decremento apos ';'.
+Ex:
+for(a = 1; a < 10; a++)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID ATRIB LITSTRING PTVIRG LITSTRING WHILE 
+##
+## Ends in an error in state: 108.
+##
+## comando_for -> FOR ABPAR comando_atribuicao PTVIRG expressao . PTVIRG comando_atrib FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR comando_atribuicao PTVIRG expressao 
+##
+
+Estado 108: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+for(a = 1; a < 10; a++)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID ATRIB LITSTRING PTVIRG WHILE 
+##
+## Ends in an error in state: 107.
+##
+## comando_for -> FOR ABPAR comando_atribuicao PTVIRG . expressao PTVIRG comando_atrib FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR comando_atribuicao PTVIRG 
+##
+
+Estado 107: Esperava uma expressao apos ';'.
+Ex:
+for(; a < 10;)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR ID WHILE 
+##
+## Ends in an error in state: 98.
+##
+## comando_atribuicao -> variavel . atribuicao expressao [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## variavel 
+##
+
+Estado 98: Esperava um '=' apos variavel.
+Ex:
+for(a = 1; ;)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR ABPAR WHILE 
+##
+## Ends in an error in state: 97.
+##
+## comando_for -> FOR ABPAR . comando_atribuicao PTVIRG expressao PTVIRG comando_atrib FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR ABPAR 
+##
+
+Estado 97: Esperava um comando de atribuicao apos '('.
+Ex:
+for(a = 1; ;)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE FOR WHILE 
+##
+## Ends in an error in state: 96.
+##
+## comando_for -> FOR . ABPAR comando_atribuicao PTVIRG expressao PTVIRG comando_atrib FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## FOR 
+##
+
+Estado 96: Esperava um '(' apos 'for'.
+Ex:
+for(;;)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE GETS ABPAR ID FCPAR WHILE 
+##
+## Ends in an error in state: 136.
+##
+## comando -> comando_gets . PTVIRG [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## comando_gets 
+##
+
+Estado 136: Esperava um ';' apos ')'.
+Ex:
+gets(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE GETS ABPAR ID WHILE 
+##
+## Ends in an error in state: 94.
+##
+## comando_gets -> GETS ABPAR variavel . FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## GETS ABPAR variavel 
+##
+
+Estado 94: Esperava um ')' apos variavel.
+Ex:
+gets(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE GETS ABPAR WHILE 
+##
+## Ends in an error in state: 93.
+##
+## comando_gets -> GETS ABPAR . variavel FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## GETS ABPAR 
+##
+
+Estado 93: Esperava uma variavel apos '('.
+Ex:
+gets(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE GETS WHILE 
+##
+## Ends in an error in state: 92.
+##
+## comando_gets -> GETS . ABPAR variavel FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## GETS 
+##
+
+Estado 92: Esperava um '(' apos 'gets'.
+Ex:
+gets(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID ABPAR FCPAR WHILE 
+##
+## Ends in an error in state: 141.
+##
+## comando -> comando_chamada . PTVIRG [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## comando_chamada 
+##
+
+Estado 141: Esperava um ';' apos ')'.
+Ex:
+void func()
+{
+   gets(a);
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID ABPAR ID VIRG WHILE 
+##
+## Ends in an error in state: 37.
+##
+## separated_nonempty_list(VIRG,__anonymous_1) -> ID VIRG . separated_nonempty_list(VIRG,__anonymous_1) [ FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## ID VIRG 
+##
+
+Estado 37: Esperava um parametro apos ','.
+Ex:
+func(a, b);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID ABPAR ID WHILE 
+##
+## Ends in an error in state: 36.
+##
+## separated_nonempty_list(VIRG,__anonymous_1) -> ID . [ FCPAR ]
+## separated_nonempty_list(VIRG,__anonymous_1) -> ID . VIRG separated_nonempty_list(VIRG,__anonymous_1) [ FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## ID 
+##
+
+Estado 36: Esperava um ')' ou ',' apos identificador.
+Ex:
+func(a);
+func(a, b);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID ABPAR WHILE 
+##
+## Ends in an error in state: 35.
+##
+## comando_chamada -> ID ABPAR . loption(separated_nonempty_list(VIRG,__anonymous_1)) FCPAR [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## ID ABPAR 
+##
+
+Estado 35: Esperava um parametro ou ')' apos '('.
+Ex:
+func();
+func(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID ATRIB LITSTRING FCPAR 
+##
+## Ends in an error in state: 143.
+##
+## comando -> comando_atribuicao . PTVIRG [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## comando_atribuicao 
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 105, spurious reduction of production comando_atribuicao -> variavel atribuicao expressao 
+##
+
+Estado 143: Esperava um ';' apos comando de atribuicao.
+Ex:
+a = 1;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID SUB 
+##
+## Ends in an error in state: 112.
+##
+## comando_atribuicao -> variavel . atribuicao expressao [ PTVIRG FCPAR ]
+## comando_id -> variavel . INCR [ PTVIRG FCPAR ]
+## comando_id -> variavel . DECR [ PTVIRG FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## variavel 
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 34, spurious reduction of production variavel -> ID 
+##
+
+Estado 112: Esperava um '=' ou decremento/incremento apos variavel.
+Ex:
+a--;
+b = 1;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID SUBATRIB LITSTRING WHILE 
+##
+## Ends in an error in state: 105.
+##
+## comando_atribuicao -> variavel atribuicao expressao . [ PTVIRG FCPAR ]
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## variavel atribuicao expressao 
+##
+
+Estado 105: Esperava um ';' ou operador logico/aritmerico apos expressao.
+Ex:
+a -= 10;
+a -= a + 10;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE ID SUBATRIB WHILE 
+##
+## Ends in an error in state: 104.
+##
+## comando_atribuicao -> variavel atribuicao . expressao [ PTVIRG FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## variavel atribuicao 
+##
+
+Estado 104: Esperava uma expressao apos '-='.
+Ex:
+a -= 1;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF ABPAR LITSTRING FCPAR ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE ELSE ABCHAVE VOID 
+##
+## Ends in an error in state: 152.
+##
+## option(__anonymous_2) -> ELSE ABCHAVE . nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## ELSE ABCHAVE 
+##
+
+Estado 152: Esperava um comando apos '{'.
+Ex:
+if()
+{
+}
+else
+{
+   a = 1;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF ABPAR LITSTRING FCPAR ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE ELSE WHILE 
+##
+## Ends in an error in state: 151.
+##
+## option(__anonymous_2) -> ELSE . ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## ELSE 
+##
+
+Estado 151: Esperava um '{' apos 'else'.
+Ex:
+if()
+{
+}
+else
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF ABPAR LITSTRING FCPAR ABCHAVE RETURN CARACTERE PTVIRG FCCHAVE VOID 
+##
+## Ends in an error in state: 150.
+##
+## comando_if -> IF ABPAR expressao FCPAR ABCHAVE nonempty_list(comando) FCCHAVE . option(__anonymous_2) [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## IF ABPAR expressao FCPAR ABCHAVE nonempty_list(comando) FCCHAVE 
+##
+
+Estado 150: Esperava um comando ou 'else' apos '}'.
+Ex:
+if(a > 10)
+{
+   a--;
+}
+else
+{
+   a++;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF ABPAR LITSTRING FCPAR ABCHAVE VOID 
+##
+## Ends in an error in state: 91.
+##
+## comando_if -> IF ABPAR expressao FCPAR ABCHAVE . nonempty_list(comando) FCCHAVE option(__anonymous_2) [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## IF ABPAR expressao FCPAR ABCHAVE 
+##
+
+Estado 91: Esperava um comando apos '{'.
+Ex:
+if(a > 10)
+{
+   a = 1;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF ABPAR LITSTRING FCPAR WHILE 
+##
+## Ends in an error in state: 90.
+##
+## comando_if -> IF ABPAR expressao FCPAR . ABCHAVE nonempty_list(comando) FCCHAVE option(__anonymous_2) [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## IF ABPAR expressao FCPAR 
+##
+
+Estado 90: Esperava um '{' apos ')'.
+Ex:
+if(a > 10)
+{
+   a = 1;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF ABPAR LITSTRING WHILE 
+##
+## Ends in an error in state: 89.
+##
+## comando_if -> IF ABPAR expressao . FCPAR ABCHAVE nonempty_list(comando) FCCHAVE option(__anonymous_2) [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+## expressao -> expressao . SOMA expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## IF ABPAR expressao 
+##
+
+Estado 89: Esperava um ')' ou operador logico/aritmetico apos expressao.
+Ex:
+if((a + b) > 10)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF ABPAR WHILE 
+##
+## Ends in an error in state: 88.
+##
+## comando_if -> IF ABPAR . expressao FCPAR ABCHAVE nonempty_list(comando) FCCHAVE option(__anonymous_2) [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## IF ABPAR 
+##
+
+Estado 88: Esperava uma expressao apos '('.
+Ex:
+if(a > 10)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE IF WHILE 
+##
+## Ends in an error in state: 87.
+##
+## comando_if -> IF . ABPAR expressao FCPAR ABCHAVE nonempty_list(comando) FCCHAVE option(__anonymous_2) [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## IF 
+##
+
+Estado 87: Esperava um '(' apos 'if'.
+Ex:
+if()
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE INCR ID WHILE 
+##
+## Ends in an error in state: 134.
+##
+## comando -> comando_id . PTVIRG [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## comando_id 
+##
+
+Estado 134: Esperava um ';' apos comando.
+Ex:
+++a;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE INCR WHILE 
+##
+## Ends in an error in state: 85.
+##
+## comando_id -> INCR . variavel [ PTVIRG FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## INCR 
+##
+
+Estado 85: Esperava uma variavel apos operador de incremento/decremento.
+Ex:
+++a;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE PUTS ABPAR ID FCPAR WHILE 
+##
+## Ends in an error in state: 131.
+##
+## comando -> comando_puts . PTVIRG [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## comando_puts 
+##
+
+Estado 131: Esperava um ';' apos comando.
+Ex:
+puts(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE PUTS ABPAR ID WHILE 
+##
+## Ends in an error in state: 83.
+##
+## comando_puts -> PUTS ABPAR variavel . FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## PUTS ABPAR variavel 
+##
+
+Estado 83: Esperava um ')' apos variavel.
+Ex:
+puts(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE PUTS ABPAR WHILE 
+##
+## Ends in an error in state: 81.
+##
+## comando_puts -> PUTS ABPAR . variavel FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## PUTS ABPAR 
+##
+
+Estado 81: Esperava uma variavel apos '('.
+Ex:
+puts(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE PUTS WHILE 
+##
+## Ends in an error in state: 80.
+##
+## comando_puts -> PUTS . ABPAR variavel FCPAR [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## PUTS 
+##
+
+Estado 80: Esperava um '(' apos 'puts'.
+Ex:
+puts(a);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN ABPAR LITSTRING WHILE 
+##
+## Ends in an error in state: 45.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> ABPAR expressao . FCPAR [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## ABPAR expressao 
+##
+
+Estado 45: Esperava um operador logico/aritmetico ou ')' apos expressao.
+Ex:
+return a + 1;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN ABPAR WHILE 
+##
+## Ends in an error in state: 43.
+##
+## expressao -> ABPAR . expressao FCPAR [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## ABPAR 
+##
+
+Estado 43: Esperava uma expressao apos '('.
+Ex:
+return (a + 1);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING DIF LITSTRING WHILE 
+##
+## Ends in an error in state: 72.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao DIF expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao DIF expressao 
+##
+
+Estado 72: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a != b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING DIF WHILE 
+##
+## Ends in an error in state: 71.
+##
+## expressao -> expressao DIF . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao DIF 
+##
+
+Estado 71: Esperava uma expressao apos '!='.
+Ex:
+return a != (b + 1);
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING DIV WHILE 
+##
+## Ends in an error in state: 53.
+##
+## expressao -> expressao DIV . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao DIV 
+##
+
+Estado 53: Esperava uma expressao apos '/'.
+Ex:
+return a / b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING E LITSTRING WHILE 
+##
+## Ends in an error in state: 70.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao E expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao E expressao 
+##
+
+Estado 70: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a && b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING E WHILE 
+##
+## Ends in an error in state: 69.
+##
+## expressao -> expressao E . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao E 
+##
+
+Estado 69: Esperava uma expressao apos '&&'.
+Ex:
+return a && b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING IGUAL LITSTRING WHILE 
+##
+## Ends in an error in state: 68.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao IGUAL expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao IGUAL expressao 
+##
+
+Estado 68: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a == b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING IGUAL WHILE 
+##
+## Ends in an error in state: 67.
+##
+## expressao -> expressao IGUAL . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao IGUAL 
+##
+
+Estado 67: Esperava uma expressao apos '=='.
+Ex:
+return a == b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MAIOR LITSTRING WHILE 
+##
+## Ends in an error in state: 66.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao MAIOR expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MAIOR expressao 
+##
+
+Estado 66: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a > b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MAIOR WHILE 
+##
+## Ends in an error in state: 65.
+##
+## expressao -> expressao MAIOR . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MAIOR 
+##
+
+Estado 65: Esperava uma expressao apos '>'.
+Ex:
+return a > b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MAIORIGUAL LITSTRING WHILE 
+##
+## Ends in an error in state: 64.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao MAIORIGUAL expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MAIORIGUAL expressao 
+##
+
+Estado 64: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a >= b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MAIORIGUAL WHILE 
+##
+## Ends in an error in state: 63.
+##
+## expressao -> expressao MAIORIGUAL . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MAIORIGUAL 
+##
+
+Estado 63: Esperava uma expressao apos '>='.
+Ex:
+return a >= b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MENOR LITSTRING WHILE 
+##
+## Ends in an error in state: 62.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao MENOR expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MENOR expressao 
+##
+
+Estado 62: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a < b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MENOR WHILE 
+##
+## Ends in an error in state: 61.
+##
+## expressao -> expressao MENOR . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MENOR 
+##
+
+Estado 61: Esperava uma expressao apos '<'.
+Ex:
+return a < b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MENORIGUAL LITSTRING WHILE 
+##
+## Ends in an error in state: 60.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao MENORIGUAL expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MENORIGUAL expressao 
+##
+
+Estado 60: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a <= b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MENORIGUAL WHILE 
+##
+## Ends in an error in state: 59.
+##
+## expressao -> expressao MENORIGUAL . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MENORIGUAL 
+##
+
+Estado 59: Esperava uma expressao apos '<='.
+Ex:
+return a <= b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MOD WHILE 
+##
+## Ends in an error in state: 51.
+##
+## expressao -> expressao MOD . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MOD 
+##
+
+Estado 51: Esperava uma expressao apos '%'.
+Ex:
+return a % b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING MULT WHILE 
+##
+## Ends in an error in state: 48.
+##
+## expressao -> expressao MULT . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao MULT 
+##
+
+Estado 48: Esperava uma expressao apos '*'.
+Ex:
+return a * b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING OU LITSTRING WHILE 
+##
+## Ends in an error in state: 58.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao OU expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao OU expressao 
+##
+
+Estado 58: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a || b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING OU WHILE 
+##
+## Ends in an error in state: 57.
+##
+## expressao -> expressao OU . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao OU 
+##
+
+Estado 57: Esperava uma expressao apos '||'.
+Ex:
+return a || b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING PTVIRG VOID 
+##
+## Ends in an error in state: 160.
+##
+## list(comando) -> comando . list(comando) [ FCCHAVE ]
+##
+## The known suffix of the stack is as follows:
+## comando 
+##
+
+Estado 160: Esperava um comando ou '}' apos ';'.
+Ex:
+void func()
+{
+   return a;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING SOMA LITSTRING WHILE 
+##
+## Ends in an error in state: 56.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao SOMA expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao SOMA expressao 
+##
+
+Estado 56: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a + b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING SOMA WHILE 
+##
+## Ends in an error in state: 55.
+##
+## expressao -> expressao SOMA . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao SOMA 
+##
+
+Estado 55: Esperava uma expressao apos '+'.
+Ex:
+return a + b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING SUB LITSTRING WHILE 
+##
+## Ends in an error in state: 47.
+##
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao SUB expressao . [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao SUB expressao 
+##
+
+Estado 47: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a - b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING SUB WHILE 
+##
+## Ends in an error in state: 46.
+##
+## expressao -> expressao SUB . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## expressao SUB 
+##
+
+Estado 46: Esperava uma expessao apos '-'.
+Ex:
+return a - b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN LITSTRING WHILE 
+##
+## Ends in an error in state: 79.
+##
+## comando_return -> RETURN expressao . [ PTVIRG ]
+## expressao -> expressao . SOMA expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## RETURN expressao 
+##
+
+Estado 79: Esperava um ';' ou operador logico/aritmetico apos expressao.
+Ex:
+return a + b;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN NEG WHILE 
+##
+## Ends in an error in state: 30.
+##
+## expressao -> NEG . expressao [ SUB SOMA PTVIRG OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## NEG 
+##
+
+Estado 30: Esperava uma expressao apos '!'.
+Ex:
+return !a;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE RETURN WHILE 
+##
+## Ends in an error in state: 78.
+##
+## comando_return -> RETURN . expressao [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## RETURN 
+##
+
+Estado 78: Esperava uma expressao apos 'return'.
+Ex:
+return (a + b) + c;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE VIRG 
+##
+## Ends in an error in state: 23.
+##
+## funcao -> tipo ID ABPAR loption(separated_nonempty_list(VIRG,__anonymous_0)) FCPAR ABCHAVE . list(declaracao) list(comando) FCCHAVE [ VOID INT FLOAT EOF CHAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo ID ABPAR loption(separated_nonempty_list(VIRG,__anonymous_0)) FCPAR ABCHAVE 
+##
+
+Estado 23: Esperava uma declaracao ou comando apos '{'.
+Ex:
+void func()
+{
+   int a;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE VOID ID PTVIRG VIRG 
+##
+## Ends in an error in state: 162.
+##
+## list(declaracao) -> declaracao . list(declaracao) [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## declaracao 
+##
+
+Estado 162: Esperava uma declaracao ou comando apos declaracao.
+Ex:
+void func()
+{
+   int a;
+   a = 1;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE VOID WHILE 
+##
+## Ends in an error in state: 24.
+##
+## declaracao -> tipo . separated_nonempty_list(VIRG,ID) PTVIRG [ WHILE VOID RETURN PUTS INT INCR IF ID GETS FOR FLOAT FCCHAVE DO DECR CHAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo 
+##
+
+Estado 24: Esperava um identificador apos tipo.
+Ex:
+void a;
+
+programa: VOID ID ABPAR FCPAR ABCHAVE WHILE ABPAR LITSTRING FCPAR ABCHAVE VOID 
+##
+## Ends in an error in state: 77.
+##
+## comando_while -> WHILE ABPAR expressao FCPAR ABCHAVE . nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## WHILE ABPAR expressao FCPAR ABCHAVE 
+##
+
+Estado 77: Esperava um comando apos '{'.
+Ex:
+while(a > 10)
+{
+   a--;
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE WHILE ABPAR LITSTRING FCPAR WHILE 
+##
+## Ends in an error in state: 76.
+##
+## comando_while -> WHILE ABPAR expressao FCPAR . ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## WHILE ABPAR expressao FCPAR 
+##
+
+Estado 76: Esperava um '{' apos ')'.
+Ex:
+while(a > 10)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE WHILE ABPAR LITSTRING WHILE 
+##
+## Ends in an error in state: 75.
+##
+## comando_while -> WHILE ABPAR expressao . FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+## expressao -> expressao . SOMA expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . SUB expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MULT expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIV expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MOD expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENOR expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . IGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . DIF expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MAIORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . MENORIGUAL expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . E expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+## expressao -> expressao . OU expressao [ SUB SOMA OU MULT MOD MENORIGUAL MENOR MAIORIGUAL MAIOR IGUAL FCPAR E DIV DIF ]
+##
+## The known suffix of the stack is as follows:
+## WHILE ABPAR expressao 
+##
+
+Estado 75: Esperava um ')' ou operador logico/aritmetico apos expressao.
+Ex:
+while(a + b)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE WHILE ABPAR WHILE 
+##
+## Ends in an error in state: 29.
+##
+## comando_while -> WHILE ABPAR . expressao FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## WHILE ABPAR 
+##
+
+Estado 29: Esperava uma expressao apos '('.
+Ex:
+while(a > 10)
+{
+}
+
+programa: VOID ID ABPAR FCPAR ABCHAVE WHILE WHILE 
+##
+## Ends in an error in state: 28.
+##
+## comando_while -> WHILE . ABPAR expressao FCPAR ABCHAVE nonempty_list(comando) FCCHAVE [ WHILE RETURN PUTS INCR IF ID GETS FOR FCCHAVE DO DECR ]
+##
+## The known suffix of the stack is as follows:
+## WHILE 
+##
+
+Estado 28: Esperava um '(' apos 'while'.
+Ex:
+while()
+{
+}
+
+programa: VOID ID ABPAR FCPAR WHILE 
+##
+## Ends in an error in state: 22.
+##
+## funcao -> tipo ID ABPAR loption(separated_nonempty_list(VIRG,__anonymous_0)) FCPAR . ABCHAVE list(declaracao) list(comando) FCCHAVE [ VOID INT FLOAT EOF CHAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo ID ABPAR loption(separated_nonempty_list(VIRG,__anonymous_0)) FCPAR 
+##
+
+Estado 22: Esperava um '{' apos ')'.
+Ex:
+void func()
+{
+}
+
+programa: VOID ID ABPAR VOID ID VIRG WHILE 
+##
+## Ends in an error in state: 18.
+##
+## separated_nonempty_list(VIRG,__anonymous_0) -> tipo ID VIRG . separated_nonempty_list(VIRG,__anonymous_0) [ FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo ID VIRG 
+##
+
+Estado 18: Esperava um tipo apos ','.
+Ex:
+void func(int a, int b)
+{
+}
+
+programa: VOID ID ABPAR VOID ID WHILE 
+##
+## Ends in an error in state: 17.
+##
+## separated_nonempty_list(VIRG,__anonymous_0) -> tipo ID . [ FCPAR ]
+## separated_nonempty_list(VIRG,__anonymous_0) -> tipo ID . VIRG separated_nonempty_list(VIRG,__anonymous_0) [ FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo ID 
+##
+
+Estado 17: Esperava um ')' ou ',' apos identificador.
+Ex:
+void func(int a)
+{
+}
+
+programa: VOID ID ABPAR VOID WHILE 
+##
+## Ends in an error in state: 16.
+##
+## separated_nonempty_list(VIRG,__anonymous_0) -> tipo . ID [ FCPAR ]
+## separated_nonempty_list(VIRG,__anonymous_0) -> tipo . ID VIRG separated_nonempty_list(VIRG,__anonymous_0) [ FCPAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo 
+##
+
+Estado 16: Esperava um identificador apos tipo.
+Ex:
+void func(int a)
+{
+}
+
+programa: VOID ID ABPAR WHILE 
+##
+## Ends in an error in state: 15.
+##
+## funcao -> tipo ID ABPAR . loption(separated_nonempty_list(VIRG,__anonymous_0)) FCPAR ABCHAVE list(declaracao) list(comando) FCCHAVE [ VOID INT FLOAT EOF CHAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo ID ABPAR 
+##
+
+Estado 15: Esperava um ')' ou tipo apos '('.
+Ex:
+void func(int a)
+{
+}
+
+programa: VOID ID PTVIRG WHILE 
+##
+## Ends in an error in state: 168.
+##
+## nonempty_list(corpo) -> corpo . [ EOF ]
+## nonempty_list(corpo) -> corpo . nonempty_list(corpo) [ EOF ]
+##
+## The known suffix of the stack is as follows:
+## corpo 
+##
+
+Estado 168: Esperava uma funcao ou 'eof'.
+Ex:
+int a;
+void func()
+{
+}
+
+programa: VOID ID VIRG ID WHILE 
+##
+## Ends in an error in state: 13.
+##
+## separated_nonempty_list(VIRG,ID) -> ID . [ PTVIRG ]
+## separated_nonempty_list(VIRG,ID) -> ID . VIRG separated_nonempty_list(VIRG,ID) [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## ID 
+##
+
+Estado 13: Esperava um ';' ou ',' apos identificador.
+Ex:
+int a, b, c;
+
+programa: VOID ID VIRG WHILE 
+##
+## Ends in an error in state: 12.
+##
+## separated_nonempty_list(VIRG,ID) -> ID VIRG . separated_nonempty_list(VIRG,ID) [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## ID VIRG 
+##
+
+Estado 12: Esperava um identificador apos ','.
+Ex:
+int a, b;
+
+programa: VOID ID WHILE 
+##
+## Ends in an error in state: 11.
+##
+## funcao -> tipo ID . ABPAR loption(separated_nonempty_list(VIRG,__anonymous_0)) FCPAR ABCHAVE list(declaracao) list(comando) FCCHAVE [ VOID INT FLOAT EOF CHAR ]
+## separated_nonempty_list(VIRG,ID) -> ID . [ PTVIRG ]
+## separated_nonempty_list(VIRG,ID) -> ID . VIRG separated_nonempty_list(VIRG,ID) [ PTVIRG ]
+##
+## The known suffix of the stack is as follows:
+## tipo ID 
+##
+
+Estado 11: Esperava um ';' ou ',' apos identificador.
+Ex:
+int a;
+
+programa: VOID WHILE 
+##
+## Ends in an error in state: 10.
+##
+## declaracao -> tipo . separated_nonempty_list(VIRG,ID) PTVIRG [ VOID INT FLOAT EOF CHAR ]
+## funcao -> tipo . ID ABPAR loption(separated_nonempty_list(VIRG,__anonymous_0)) FCPAR ABCHAVE list(declaracao) list(comando) FCCHAVE [ VOID INT FLOAT EOF CHAR ]
+##
+## The known suffix of the stack is as follows:
+## tipo 
+##
+
+Estado 10: Esperava um identificador apos tipo.
+Ex:
+int a;
+
+programa: WHILE 
+##
+## Ends in an error in state: 0.
+##
+## programa' -> . programa [ # ]
+##
+## The known suffix of the stack is as follows:
+## 
+##
+
+Estado 0: Esperava um programa (include/declaracao/funcao).
+Ex:
+#include <stdio.h>
+int a;
+int main()
+{
+   return 0;
+}
+

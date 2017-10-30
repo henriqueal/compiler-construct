@@ -1,0 +1,14 @@
+a, b, soma: inteiro
+
+function somador(x: inteiro, y: inteiro) : inteiro
+  r: inteiro
+  inicio
+    r = x + y
+    return r
+  end 
+
+a = 2
+b = 3
+soma = somador(a, b)
+saida a, b, soma
+

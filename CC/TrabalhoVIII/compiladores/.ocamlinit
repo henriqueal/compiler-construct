@@ -1,0 +1,10 @@
+#use "topfind";;
+#require "menhirLib";;
+#directory "_build";;
+#load "erroSint.cmo";;
+#load "parser.cmo";;
+#load "lualexer.cmo";;
+#load "ast.cmo";;
+#load "main.cmo";;
+open Ast
+open Main

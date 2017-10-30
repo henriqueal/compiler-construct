@@ -1,0 +1,30 @@
+### Starting build.
+# Target: interpreteTeste.ml.depends, tags: { extension:ml, file:interpreteTeste.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules interpreteTeste.ml > interpreteTeste.ml.depends # cached
+# Target: ast.ml.depends, tags: { extension:ml, file:ast.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules ast.ml > ast.ml.depends
+# Target: interprete.mli.depends, tags: { extension:mli, file:interprete.mli, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules interprete.mli > interprete.mli.depends # cached
+# Target: ast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, package(menhirLib), quiet }
+ocamlfind ocamlc -c -package menhirLib -o ast.cmo ast.ml
+# Target: tast.ml.depends, tags: { extension:ml, file:tast.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules tast.ml > tast.ml.depends # cached
+# Target: tast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:tast.cmo, file:tast.ml, implem, ocaml, package(menhirLib), quiet }
+ocamlfind ocamlc -c -package menhirLib -o tast.cmo tast.ml # cached
+# Target: interprete.cmi, tags: { byte, compile, extension:mli, file:interprete.mli, interf, ocaml, package(menhirLib), quiet }
+ocamlfind ocamlc -c -package menhirLib -o interprete.cmi interprete.mli # cached
+# Target: lexico.mll, tags: { extension:mll, file:lexico.mll, lexer, ocaml, ocamllex, package(menhirLib), quiet }
+/home/henrique/.opam/4.02.1/bin/ocamllex.opt -q lexico.mll # cached
+# Target: lexico.ml.depends, tags: { extension:ml, file:lexico.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules lexico.ml > lexico.ml.depends # cached
+# Target: sintatico.mly.depends, tags: { extension:mly, file:sintatico.mly, menhir_ocamldep, ocaml, ocamldep, package(menhirLib), quiet }
+menhir --table --raw-depend --ocamldep 'ocamlfind ocamldep -modules' sintatico.mly > sintatico.mly.depends # cached
+# Target: sast.ml.depends, tags: { extension:ml, file:sast.ml, ocaml, ocamldep, package(menhirLib), quiet }
+ocamlfind ocamldep -package menhirLib -modules sast.ml > sast.ml.depends
+# Target: sast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:sast.cmo, file:sast.ml, implem, ocaml, package(menhirLib), quiet }
+ocamlfind ocamlc -c -package menhirLib -o sast.cmo sast.ml
++ ocamlfind ocamlc -c -package menhirLib -o sast.cmo sast.ml
+File "sast.ml", line 4, characters 15-28:
+Error: Unbound type constructor var
+Command exited with code 2.
+# Compilation unsuccessful.

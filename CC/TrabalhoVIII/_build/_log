@@ -1,0 +1,21 @@
+### Starting build.
+Backtrace:
+                      - Failed to build the target interpreteTeste.byte
+                          - Building interpreteTeste.byte:
+                              - Building interpreteTeste.cmo:
+                                  - Failed to build all of these:
+                                      - Building interpreteTeste.ml:
+                                          - Failed to build all of these:
+                                              - Building interpreteTeste.mly
+                                              - Building interpreteTeste.mlypack
+                                              - Building interpreteTeste.mll
+                                      - Building interpreteTeste.mli:
+                                          - Failed to build all of these:
+                                              - Building interpreteTeste.mly
+                                              - Building interpreteTeste.mlypack
+                                      - Building interpreteTeste.mlpack
+                                      - Building interpreteTeste.mli:
+                                          - Failed to build all of these:
+                                              - Building interpreteTeste.mly
+                                              - Building interpreteTeste.mlypack
+# Compilation unsuccessful.

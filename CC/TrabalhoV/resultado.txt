@@ -1,0 +1,55 @@
+- : Ast.program =
+Program
+ (Block
+   ([Function (Funcname ("fatorial", [], None),
+      Funcbody (Some (NameListVirgula (Namelist ("n", []), None)),
+       Block
+        ([If
+           (Prefixexp
+             (ExpressaoParentese
+               (ExpressaoBinaria (Prefixexp (Var (Id "n")), MenorIgual,
+                 Int 0))),
+           Block ([], Some (Retstat (Some (ExpList (Int 1, []))))), [],
+           Some
+            (Else
+              (Block ([],
+                Some
+                 (Retstat
+                   (Some
+                     (ExpList
+                       (Prefixexp
+                         (ExpressaoParentese
+                           (ExpressaoBinaria (Prefixexp (Var (Id "n")),
+                             Multiplicacao,
+                             Prefixexp
+                              (Functioncall
+                                (PrefixexpArgs (Var (Id "fatorial"),
+                                  ArgsParentese
+                                   (Some
+                                     (ExpList
+                                       (ExpressaoBinaria
+                                         (Prefixexp (Var (Id "n")),
+                                         Ast.Subtracao, Int 1),
+                                       []))))))))),
+                       []))))))))],
+        None)));
+     Print
+      (ArgsParentese (Some (ExpList (Ast.String "Digite um numero: ", []))));
+     Ast.Atribuicao (Varlist (Id "numero", []), ExpList (Tonumber Read, []));
+     Ast.Atribuicao (Varlist (Id "fat", []),
+      ExpList
+       (Prefixexp
+         (Functioncall
+           (PrefixexpArgs (Var (Id "fatorial"),
+             ArgsParentese
+              (Some (ExpList (Prefixexp (Var (Id "numero")), [])))))),
+       []));
+     Print
+      (ArgsParentese
+        (Some
+          (ExpList (Ast.String "O fatorial de",
+            [VirgulaExp (Prefixexp (Var (Id "numero")));
+             VirgulaExp (Ast.String "e: ");
+             VirgulaExp (Prefixexp (Var (Id "fat")))]))))],
+   None))
+
