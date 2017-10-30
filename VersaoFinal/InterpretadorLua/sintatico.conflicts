@@ -1,0 +1,66 @@
+
+** Conflict (shift/reduce) in state 111.
+** Tokens involved: STRING PFLOAT INT ID BOOL APAR
+** The following explanations concentrate on token STRING.
+** This state is reached from programa after reading:
+
+list(declaracao_de_variavel) list(declaracao_de_funcao) INICIO RETORNE 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+list(declaracao_de_variavel) list(declaracao_de_funcao) INICIO list(comando) FIM EOF 
+                                                               (?)
+
+** In state 111, looking ahead at STRING, shifting is permitted
+** because of the following sub-derivation:
+
+comando list(comando) 
+comando_retorno 
+RETORNE option(expressao) 
+        expressao 
+        . STRING 
+
+** In state 111, looking ahead at STRING, reducing production
+** option(expressao) -> 
+** is permitted because of the following sub-derivation:
+
+comando list(comando) // lookahead token appears because list(comando) can begin with STRING
+comando_retorno // lookahead token is inherited
+RETORNE option(expressao) // lookahead token is inherited
+        . 
+
+** Conflict (shift/reduce) in state 54.
+** Token involved: APAR
+** This state is reached from programa after reading:
+
+list(declaracao_de_variavel) list(declaracao_de_funcao) INICIO RETORNE ID 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+programa 
+list(declaracao_de_variavel) list(declaracao_de_funcao) INICIO list(comando) FIM EOF 
+                                                               (?)
+
+** In state 54, looking ahead at APAR, shifting is permitted
+** because of the following sub-derivation:
+
+comando list(comando) 
+comando_retorno 
+RETORNE option(expressao) 
+        expressao 
+        chamada 
+        ID . APAR loption(separated_nonempty_list(VIRG,expressao)) FPAR 
+
+** In state 54, looking ahead at APAR, reducing production
+** variavel -> ID 
+** is permitted because of the following sub-derivation:
+
+comando list(comando) // lookahead token appears because list(comando) can begin with APAR
+comando_retorno // lookahead token is inherited
+RETORNE option(expressao) // lookahead token is inherited
+        expressao // lookahead token is inherited
+        variavel // lookahead token is inherited
+        ID . 

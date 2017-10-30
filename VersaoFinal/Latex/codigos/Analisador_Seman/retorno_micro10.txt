@@ -1,0 +1,94 @@
+(Programa
+  ([DecVar
+     (("fat",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 0}),
+     TipoInt);
+    DecVar
+     (("numero",
+       {Lexing.pos_fname = ""; pos_lnum = 1; pos_bol = 0; pos_cnum = 5}),
+     TipoInt)],
+  [DecFun
+    {fn_nome =
+      ("fatorial",
+       {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 23; pos_cnum = 32});
+     fn_tiporet = TipoInt;
+     fn_formais =
+      [(("n",
+         {Lexing.pos_fname = ""; pos_lnum = 3; pos_bol = 23; pos_cnum = 41}),
+        TipoInt)];
+     fn_locais = [];
+     fn_corpo =
+      [CmdSe
+        (Tast.ExpOp ((Igual, TipoBool),
+          (Tast.ExpVar
+            (VarSimples
+              ("n",
+               {Lexing.pos_fname = ""; pos_lnum = 5; pos_bol = 68;
+                pos_cnum = 73}),
+            TipoInt),
+           TipoInt),
+          (Tast.ExpInt (0, TipoInt), TipoInt)),
+        [CmdRetorno (Some (Tast.ExpInt (1, TipoInt)))],
+        Some
+         [CmdRetorno
+           (Some
+             (Tast.ExpOp ((Mult, TipoInt),
+               (Tast.ExpVar
+                 (VarSimples
+                   ("n",
+                    {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 103;
+                     pos_cnum = 112}),
+                 TipoInt),
+                TipoInt),
+               (Tast.ExpChamada ("fatorial",
+                 [Tast.ExpOp ((Menos, TipoInt),
+                   (Tast.ExpVar
+                     (VarSimples
+                       ("n",
+                        {Lexing.pos_fname = ""; pos_lnum = 8; pos_bol = 103;
+                         pos_cnum = 125}),
+                     TipoInt),
+                    TipoInt),
+                   (Tast.ExpInt (1, TipoInt), TipoInt))],
+                 TipoInt),
+                TipoInt))))])]}],
+  [CmdSaida [Tast.ExpString ("Digite um numero:", TipoString)];
+   CmdEntrada
+    [Tast.ExpVar
+      (VarSimples
+        ("numero",
+         {Lexing.pos_fname = ""; pos_lnum = 15; pos_bol = 176;
+          pos_cnum = 176}),
+      TipoInt)];
+   CmdAtrib
+    (Tast.ExpVar
+      (VarSimples
+        ("fat",
+         {Lexing.pos_fname = ""; pos_lnum = 17; pos_bol = 206;
+          pos_cnum = 206}),
+      TipoInt),
+    Tast.ExpChamada ("fatorial",
+     [Tast.ExpVar
+       (VarSimples
+         ("numero",
+          {Lexing.pos_fname = ""; pos_lnum = 17; pos_bol = 206;
+           pos_cnum = 221}),
+       TipoInt)],
+     TipoInt));
+   CmdSaida
+    [Tast.ExpString ("O fatorial de", TipoString);
+     Tast.ExpVar
+      (VarSimples
+        ("numero",
+         {Lexing.pos_fname = ""; pos_lnum = 19; pos_bol = 230;
+          pos_cnum = 253}),
+      TipoInt);
+     Tast.ExpString ("eh: ", TipoString);
+     Tast.ExpVar
+      (VarSimples
+        ("fat",
+         {Lexing.pos_fname = ""; pos_lnum = 19; pos_bol = 230;
+          pos_cnum = 269}),
+      TipoInt)]]),
+ <abstr>)
+
